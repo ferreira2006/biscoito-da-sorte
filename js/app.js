@@ -9,8 +9,7 @@ let historico = [];
 
 // Lista de frases
 let frases = [];
-
-fetch('assets/frases.txt')
+fetch('../assets/frases.txt')
   .then(response => response.text())
   .then(data => {
     frases = data.split('\n');
