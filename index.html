@@ -14,7 +14,22 @@
         <h1>Biscoito da Sorte</h1>
 
         <!-- Imagem do biscoito -->
-        <img id="biscoitoImg" src="assets/icons/biscoito.png" alt="Biscoito da Sorte" />
+        <div id="biscoitoContainer" style="position: relative; display: inline-block;">
+  <img id="biscoitoImg" src="assets/biscoito.png" alt="Biscoito" />
+  <div id="spinner" style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      border: 3px solid #ccc;
+      border-top: 3px solid #555;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+  "></div>
+</div>
+
        
         <p id="frase"></p>
 
