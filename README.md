@@ -26,8 +26,8 @@ biscoito-da-sorte/
 ├─ js/
 │ └─ app.js # Script principal do app
 ├─ assets/
-│ ├─ biscoito.png # Imagem do biscoito
-│ ├─ som-biscoito.mp3 # Som do biscoito
+│ ├─ icons/biscoito.png # Imagem do biscoito
+│ ├─ sons/som-biscoito.mp3 # Som do biscoito
 │ └─ frases.txt # Lista de frases (uma por linha)
 ├─ css/
 │ └─ style.css # Estilos do app, incluindo modo escuro
