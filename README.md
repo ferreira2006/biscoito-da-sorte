@@ -19,6 +19,7 @@ Um aplicativo web divertido que mostra **frases inspiradoras e motivacionais**, 
 
 ## 📂 Estrutura do projeto
 
+```
 biscoito-da-sorte/
 │
 ├─ index.html # Página principal
@@ -31,6 +32,8 @@ biscoito-da-sorte/
 ├─ css/
 │ └─ style.css # Estilos do app, incluindo modo escuro
 └─ README.md
+
+```
 
 ---
 
