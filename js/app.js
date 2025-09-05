@@ -10,7 +10,7 @@ let historico = [];
 // Lista de frases
 let frases = [];
 
-fetch('../assets/frases.txt')
+fetch('https://github.com/ferreira2006/biscoito-da-sorte/blob/main/assets/frases.txt')
   .then(response => response.text())
   .then(data => {
     frases = data.split('\n');
