@@ -11,7 +11,7 @@ let historico = [];
 let frases = [];
 //fetch('../assets/frases.txt') // não funciona
 //fetch('https://ferreira2006.github.io/biscoito-da-sorte/assets/frases.txt') // funciona
-  fetch('/biscoito-da-sorte/assets/frases.txt')
+  fetch('/biscoito-da-sorte/assets/frases.txt') // funciona
   .then(response => response.text())
   .then(data => {
     frases = data.split('\n');
