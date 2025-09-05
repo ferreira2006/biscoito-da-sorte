@@ -4,32 +4,40 @@ const historicoElemento = document.getElementById("historico");
 const toggleTema = document.getElementById("toggleTema");
 const biscoitoImg = document.getElementById("biscoitoImg");
 const somBiscoito = document.getElementById("somBiscoito");
+const spinner = document.getElementById("spinner");
 
 let historico = [];
-
-// Lista de frases
 let frases = [];
-//fetch('../assets/frases.txt') // não funciona
-//fetch('https://ferreira2006.github.io/biscoito-da-sorte/assets/frases.txt') // funciona
-  fetch('/biscoito-da-sorte/assets/frases.txt') // funciona
+
+// Pré-carrega o som
+somBiscoito.load();
+
+// Desativa o biscoito enquanto carrega
+biscoitoImg.style.pointerEvents = "none";
+spinner.style.display = "block";
+
+// Carrega as frases
+fetch('/biscoito-da-sorte/assets/frases.txt')
   .then(response => response.text())
   .then(data => {
     frases = data.split('\n');
-    // Agora você pode usar o array 'frases' no seu aplicativo
+
+    // Ativa o biscoito e esconde o spinner
+    biscoitoImg.style.pointerEvents = "auto";
+    spinner.style.display = "none";
   })
   .catch(error => console.error('Erro ao carregar as frases:', error));
 
 // Quebrar Biscoito
 biscoitoImg.addEventListener("click", () => {
-  // Animação do biscoito
   biscoitoImg.classList.add("quebrar");
-  setTimeout(() => biscoitoImg.classList.remove("quebrar"), 500);
 
-  // Toca o som
-  somBiscoito.play();
-
-  // Mostra frase aleatória
-  quebrarBiscoitoLocal();
+  setTimeout(() => {
+    biscoitoImg.classList.remove("quebrar");
+    somBiscoito.currentTime = 0;
+    somBiscoito.play();
+    quebrarBiscoitoLocal();
+  }, 500);
 });
 
 // Limpar histórico
@@ -49,20 +57,10 @@ function quebrarBiscoitoLocal() {
   const indice = Math.floor(Math.random() * frases.length);
   const novaFrase = frases[indice];
 
-  // Mostra a frase
   frase.textContent = novaFrase;
 
-  // Salva no histórico
   historico.push(novaFrase);
+  if (historico.length > 5) historico = historico.slice(-5);
 
-  // Limita o histórico às 5 últimas frases
-  if (historico.length > 5) {
-    historico = historico.slice(-5); // pega só os 5 últimos elementos
-  }
-
-  // Atualiza lista no HTML
-  historicoElemento.innerHTML = historico
-    .map(f => `<li>${f}</li>`)
-    .join("");
+  historicoElemento.innerHTML = historico.map(f => `<li>${f}</li>`).join("");
 }
-
